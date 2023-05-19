@@ -23,7 +23,7 @@ const socks= ({host,psw,sport})=>{
           logcb('conn: ')(hostname,port);
           socks.write((head[1]=0x00,head));
           const duplex=createWebSocketStream(ws);
-          socks.on('error',errcb('E1:')).pipe(duplex).pipe(socks).on('error',errcb('E2:'));
+          socks.pipe(duplex).on('error',errcb('E1:')).pipe(socks).on('error',errcb('E2:'));
         }).on('error',e=>{
           errcb('conn-err:')(e);
           socks.end((head[1]=0x03,head));
