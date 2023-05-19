@@ -4,18 +4,19 @@
 Cloudflare Worker 代理工具
 
 ### 准备工作 ###
+* 安装好nodejs与npm包管理工具。
 * 注册Worker账号，并绑定好域名。
 
 ### 安装 ###
 * ```npm i cfproxy -g```
 
 ### 使用 ###
-* 设置参数并发布到Cloudflare：
+* 设置参数并生成文件(config.json配置文件, worker.txt服务端内容文件)
 	* ```cfproxy gen```
 * 开启本地代理：
 	* ```cfproxy go```
 
-默认将绑定一个本地Socks5代理服务，所有流量经由程序转发到Worker
+开启代理将本地机器上绑定一个Socks5端口，通过此端口代理的流量经由程序转发到Cloudflare Worker
 
 [提交Bugs](https://github.com/DNetL/cfproxy/issues)
 [兴趣群组](https://t.me/DNetLab)
