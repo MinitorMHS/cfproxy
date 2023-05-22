@@ -1,4 +1,5 @@
 module.exports=`
+//@DNetL
 import { connect } from 'cloudflare:sockets';
 export default{async fetch(request){
   const upgradeHeader=request.headers.get("Upgrade");
@@ -6,8 +7,8 @@ export default{async fetch(request){
   const [client, server]=Object.values(new WebSocketPair());
   server.accept();
   server.addEventListener('message',({data})=>{
-    const {hostname,port,psw}=JSON.parse(data);
     try{
+      const {hostname,port,psw}=JSON.parse(data);
       if(passwd!=psw) throw 'Illegal-User';
       const socket=connect({hostname,port});
       new ReadableStream({
@@ -16,14 +17,13 @@ export default{async fetch(request){
           server.onerror=e=>controller.error(e);
           server.onclose=e=>controller.close(e);
         },
-        cancel(reason){console.log('cancel',reason);}
+        cancel(reason){server.close();}
       }).pipeTo(socket.writable);
       socket.readable.pipeTo(new WritableStream({
         start(controller){server.onerror=e=>controller.error(e);},
-        write(chunk){server.send(chunk);},
-        abort(reason){console.log('abort',reason);}
+        write(chunk){server.send(chunk);}
       }));
-    }catch(error){ return new Response(null, {status:500}); }
+    }catch(error){ server.close(); }
   },{once:true});
   return new Response(null, {status:101, webSocket:client});
 }}`
