@@ -11,14 +11,13 @@ Cloudflare Worker 代理工具
 * ```npm i cfproxy -g```
 
 ### 使用 ###
-* 设置参数并生成文件(config.json配置文件, worker.txt服务端内容文件)
+* v2ray方式部署：生成文件(配置文件:v.json, Worker内容文件:v.txt )
+	* ```cfproxy v```
+* socks5方式部署: 生成文件(配置文件:config.json, Worker内容文件:s.txt)
 	* ```cfproxy gen```
-* 开启本地代理：
+* 开启本地socks5端口：
 	* ```cfproxy go```
 
-开启代理将本地机器上绑定一个Socks5端口，通过此端口代理的流量经由程序转发到Cloudflare Worker
-
-[提交Bugs](https://github.com/DNetL/cfproxy/issues)
 [兴趣群组](https://t.me/DNetLab)
 
 # License #
