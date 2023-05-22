@@ -1,4 +1,4 @@
-//socks5->ws
+//@DNetL
 const net=require('net');
 const {WebSocket,createWebSocketStream }=require('ws');
 const logcb= (...args)=>console.log.bind(this,...args);
