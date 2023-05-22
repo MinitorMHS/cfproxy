@@ -1,11 +1,12 @@
 {
   "name": "cfproxy",
-  "description": "A local socks5 proxy server over Cloudflare Worker",
+  "description": "A proxy tool deployed on the Cloudflare Worker",
   "bin": "cli.js",
   "author": "DNetL",
   "keywords": [
     "proxy",
     "tunnel",
+    "v2ray",
     "socks5",
     "serverless",
     "Cloudflare",
@@ -20,8 +21,9 @@
   },
   "homepage": "https://github.com/DNetL/cfproxy#readme",
   "dependencies": {
-    "ws": "^8.2.3"
+    "ws": "^8.2.3",
+    "uuid": "^9.0.0"
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "license": "MIT"
 }
